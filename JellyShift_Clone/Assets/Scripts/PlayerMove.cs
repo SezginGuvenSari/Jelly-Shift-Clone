@@ -4,14 +4,23 @@ using UnityEngine;
 
 public class PlayerMove : MonoBehaviour
 {
+    public static PlayerMove Instance;
     private Camera cam;
     public Rigidbody rb;
-
+    public GameObject mirror,player;
     public float lerpValue;
     public float minX, maxX;
     public float minY, maxY;
     private bool isGameEnded;
     public float speed;
+    
+    private void Awake()
+    {
+        if (Instance == null)
+        {
+            Instance = this;
+        }
+    }
     void Start()
     {
         cam = Camera.main;
@@ -37,7 +46,7 @@ public class PlayerMove : MonoBehaviour
         Vector3 mousPos = Input.mousePosition;
         mousPos.z = 10;
 
-        Vector3 moveVec = cam.ScreenToWorldPoint(mousPos);
+       Vector3 moveVec = cam.ScreenToWorldPoint(mousPos);
 
         float x = transform.localScale.x;
         moveVec.z = transform.localScale.z;
@@ -58,6 +67,16 @@ public class PlayerMove : MonoBehaviour
     private void Move()
     {
         rb.velocity = Vector3.forward * speed * Time.deltaTime;
+    }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawLine(player.transform.position, mirror.transform.position);
+        
+     
+
+        
     }
 
 }
