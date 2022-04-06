@@ -5,7 +5,7 @@ using UnityEngine;
 public class PlayerMove : MonoBehaviour
 {
     private Camera cam;
-    private Rigidbody rb;
+    public Rigidbody rb;
 
     public float lerpValue;
     public float minX, maxX;
@@ -15,7 +15,7 @@ public class PlayerMove : MonoBehaviour
     void Start()
     {
         cam = Camera.main;
-        rb = GetComponent<Rigidbody>();
+      
     }
 
 
@@ -50,7 +50,7 @@ public class PlayerMove : MonoBehaviour
         moveVec.x = Mathf.Clamp(x, minX, maxX);
 
         transform.localScale = moveVec;
-
+        MirrorScript.instance.ChangeScaleOfTheMirror(moveVec);
 
 
     }

@@ -58,6 +58,8 @@
   <ItemGroup>
     <Compile Include="Assets\Scripts\PlayerMove.cs" />
     <Compile Include="Assets\Scripts\CameraMove.cs" />
+    <Compile Include="Assets\Scripts\MirrorScript.cs" />
+    <Compile Include="Assets\Scripts\TriggerCont.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">
